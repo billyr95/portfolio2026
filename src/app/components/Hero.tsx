@@ -32,8 +32,8 @@ export default function Hero() {
 
           {/* Tagline */}
           <p className="max-w-xs text-base font-light leading-relaxed text-white/70 sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
-            Design Engineer crafting polished digital experiences — 
-            where thoughtful design meets production-ready code.
+            Design Engineer crafting polished digital experiences. 
+            Where thoughtful design meets production-ready code.
           </p>
         </div>
 
