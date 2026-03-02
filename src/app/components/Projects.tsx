@@ -81,18 +81,20 @@ export default function Projects() {
       {/* Horizontal Scroll Container */}
       <div className="relative">
         <div 
-          className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 sm:gap-6 sm:px-6 sm:pb-12 md:gap-8 md:px-12 lg:gap-12 lg:px-24"
+          className="scrollbar-hide flex gap-4 overflow-x-auto pb-8 sm:gap-6 sm:pb-12 md:gap-8 lg:gap-12"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
             WebkitOverflowScrolling: 'touch',
+            paddingLeft: 'calc((100vw - 90vw) / 2)',
+            paddingRight: 'calc((100vw - 90vw) / 2)',
           }}
         >
           {projects.map((project, index) => (
             <article
               key={project.id}
               onClick={() => handleCardClick(project.slug)}
-              className="group relative aspect-[3/4] w-[85vw] flex-shrink-0 snap-center cursor-pointer overflow-hidden rounded-xl bg-white/5 transition-all duration-500 ease-out active:scale-[0.98] sm:aspect-[4/5] sm:w-[75vw] sm:snap-start sm:rounded-lg md:w-[60vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[50vw] xl:w-[45vw]"
+              className="group relative aspect-[16/10] w-[90vw] flex-shrink-0 cursor-pointer overflow-hidden rounded-xl bg-white/5 transition-all duration-500 ease-out active:scale-[0.98] sm:w-[80vw] sm:rounded-lg md:w-[65vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[55vw] xl:w-[50vw]"
             >
               {/* Thumbnail Image */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5">
@@ -157,9 +159,6 @@ export default function Projects() {
               <div className="absolute inset-0 rounded-xl ring-2 ring-white/0 transition-all duration-200 active:ring-white/20 sm:hidden" />
             </article>
           ))}
-
-          {/* End spacer for scroll padding */}
-          <div className="w-4 flex-shrink-0 sm:w-6 md:w-12 lg:w-24" aria-hidden="true" />
         </div>
       </div>
 
