@@ -1,8 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Placeholder project data - replace with your actual projects
 const projects = [
@@ -56,6 +59,67 @@ const projects = [
 export default function Projects() {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header reveal
+      gsap.fromTo(
+        headerRef.current,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Cards stagger in
+      const cards = cardsRef.current?.querySelectorAll('article');
+      if (cards) {
+        gsap.fromTo(
+          cards,
+          { x: 60, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 70%',
+            },
+          }
+        );
+      }
+
+      // Indicator fades in
+      gsap.fromTo(
+        indicatorRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          delay: 0.4,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 60%',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleCardClick = (slug: string) => {
     // Fade out the entire page content for smooth transition
@@ -73,7 +137,7 @@ export default function Projects() {
   return (
     <section id="projects" ref={sectionRef} className="relative z-10 py-16 sm:py-20 md:py-24">
       {/* Section Header */}
-      <div className="mb-8 px-4 sm:mb-10 sm:px-6 md:mb-12 md:px-12 lg:px-24">
+      <div ref={headerRef} className="mb-8 px-4 sm:mb-10 sm:px-6 md:mb-12 md:px-12 lg:px-24">
         <h2 className="text-xs font-medium uppercase tracking-widest text-white/50 sm:text-sm">
           Selected Work
         </h2>
@@ -82,6 +146,7 @@ export default function Projects() {
       {/* Horizontal Scroll Container */}
       <div className="relative">
         <div 
+          ref={cardsRef}
           className="scrollbar-hide flex gap-4 overflow-x-auto pb-8 sm:gap-6 sm:pb-12 md:gap-8 lg:gap-12"
           style={{
             scrollbarWidth: 'none',
@@ -161,7 +226,7 @@ export default function Projects() {
       </div>
 
       {/* Scroll indicator - adjusted for mobile */}
-      <div className="mt-6 flex items-center justify-center gap-2 text-white/30 sm:mt-8">
+      <div ref={indicatorRef} className="mt-6 flex items-center justify-center gap-2 text-white/30 sm:mt-8">
         <span className="text-[10px] uppercase tracking-widest sm:text-xs">Swipe</span>
         <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
