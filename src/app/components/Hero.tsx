@@ -8,10 +8,11 @@ export default function Hero() {
       {/* Fixed WebGL Background - stays behind everything */}
       <div className="fixed inset-0 z-0">
         <UnicornScene
-          projectId="e9Y09LGe2QNS9g4pD3bN"
+          projectId="jzoNdJpxFUstjYPvZrvk"
           sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.5/dist/unicornStudio.umd.js"
           width="100%"
           height="100%"
+          production={true}
         />
       </div>
 
