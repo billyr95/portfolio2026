@@ -58,11 +58,12 @@ export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
 
   const handleCardClick = (slug: string) => {
-    // Simple fade out the whole section, then navigate
-    gsap.to(sectionRef.current, {
+    // Fade out the entire page content for smooth transition
+    const mainContent = document.querySelector('main');
+    gsap.to(mainContent || sectionRef.current, {
       opacity: 0,
-      duration: 0.3,
-      ease: 'power2.out',
+      duration: 0.4,
+      ease: 'power2.inOut',
       onComplete: () => {
         router.push(`/projects/${slug}`);
       },
@@ -94,7 +95,7 @@ export default function Projects() {
             <article
               key={project.id}
               onClick={() => handleCardClick(project.slug)}
-              className="group relative aspect-[16/10] w-[90vw] flex-shrink-0 cursor-pointer overflow-hidden rounded-xl bg-white/5 transition-all duration-500 ease-out active:scale-[0.98] sm:w-[80vw] sm:rounded-lg md:w-[65vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[55vw] xl:w-[50vw]"
+              className="group relative aspect-[16/10] w-[90vw] flex-shrink-0 cursor-pointer overflow-hidden rounded-xl bg-white/5 transition-all duration-500 ease-out sm:w-[80vw] sm:rounded-lg md:w-[65vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[55vw] xl:w-[50vw]"
             >
               {/* Thumbnail Image */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5">
@@ -154,9 +155,6 @@ export default function Projects() {
                   </svg>
                 </div>
               </div>
-
-              {/* Touch indicator for mobile */}
-              <div className="absolute inset-0 rounded-xl ring-2 ring-white/0 transition-all duration-200 active:ring-white/20 sm:hidden" />
             </article>
           ))}
         </div>
