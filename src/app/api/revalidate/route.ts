@@ -1,8 +1,4 @@
-// src/app/api/revalidate/route.ts
-// Point your Sanity webhook at: https://yourdomain.com/api/revalidate
-// Set the shared secret in your Sanity webhook config and SANITY_REVALIDATE_SECRET env var.
-
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -13,16 +9,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json();
-    const { _type, slug } = body;
-
-    if (_type === 'project') {
-      // Revalidate the projects list and the specific project page
-      revalidateTag('projects');
-      if (slug?.current) {
-        revalidateTag(`project:${slug.current}`);
-      }
-    }
+    // Revalidate all project pages
+    revalidatePath('/');
+    revalidatePath('/projects/[slug]', 'page');
 
     return NextResponse.json({ revalidated: true, now: Date.now() });
   } catch {
