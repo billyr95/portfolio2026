@@ -6,7 +6,46 @@ import Link from 'next/link';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import type { ProjectDetail, NextProject } from '@/lib/sanity/types';
+
+const portableTextComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="mb-4 text-base leading-relaxed text-white/60 sm:text-lg sm:text-white/70">{children}</p>
+    ),
+    h2: ({ children }) => (
+      <h2 className="mb-3 mt-8 text-xl font-medium text-white sm:text-2xl">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-2 mt-6 text-lg font-medium text-white sm:text-xl">{children}</h3>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="my-4 border-l-2 border-white/20 pl-4 italic text-white/50">{children}</blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="mb-4 list-disc space-y-1 pl-5 text-base text-white/60 sm:text-lg sm:text-white/70">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="mb-4 list-decimal space-y-1 pl-5 text-base text-white/60 sm:text-lg sm:text-white/70">{children}</ol>
+    ),
+  },
+  marks: {
+    strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
+    underline: ({ children }) => <span className="underline">{children}</span>,
+    code: ({ children }) => (
+      <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-white/80">{children}</code>
+    ),
+    link: ({ value, children }) => (
+      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="underline text-white/80 hover:text-white transition-colors">
+        {children}
+      </a>
+    ),
+  },
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,10 +151,10 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
         </div>
 
         {/* Overview */}
-        {project.overview && (
+        {project.overview?.length > 0 && (
           <div className="mb-16 max-w-3xl sm:mb-24">
             <h2 className="mb-4 text-xl font-medium text-white sm:mb-6 sm:text-2xl md:text-3xl">Overview</h2>
-            <p className="text-base leading-relaxed text-white/60 sm:text-lg sm:text-white/70">{project.overview}</p>
+            <PortableText value={project.overview} components={portableTextComponents} />
           </div>
         )}
 
@@ -127,7 +166,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
                 return (
                   <div key={section._key} className="max-w-3xl">
                     <h2 className="mb-4 text-xl font-medium text-white sm:mb-6 sm:text-2xl md:text-3xl">{section.title}</h2>
-                    <p className="text-base leading-relaxed text-white/60 sm:text-lg sm:text-white/70">{section.content}</p>
+                    <PortableText value={section.content} components={portableTextComponents} />
                   </div>
                 );
               }

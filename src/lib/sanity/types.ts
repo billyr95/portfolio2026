@@ -1,10 +1,12 @@
-// ─── Section types (portable-ish, but typed manually for simplicity) ───────────
+import type { PortableTextBlock } from '@portabletext/react';
+
+// ─── Section types ────────────────────────────────────────────────────────────
 
 export interface TextSection {
   _key: string;
   _type: 'textSection';
   title: string;
-  content: string;
+  content: PortableTextBlock[];
 }
 
 export interface ImageSection {
@@ -35,7 +37,7 @@ export interface ProjectListItem {
 }
 
 export interface ProjectDetail extends ProjectListItem {
-  overview: string;
+  overview: PortableTextBlock[];
   sections: ProjectSection[];
 }
 

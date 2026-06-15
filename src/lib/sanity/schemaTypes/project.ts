@@ -4,6 +4,38 @@
 
 import { defineField, defineType } from 'sanity';
 
+function richTextBlock() {
+  return {
+    type: 'block',
+    styles: [
+      { title: 'Normal', value: 'normal' },
+      { title: 'H2', value: 'h2' },
+      { title: 'H3', value: 'h3' },
+      { title: 'Quote', value: 'blockquote' },
+    ],
+    lists: [
+      { title: 'Bullet', value: 'bullet' },
+      { title: 'Number', value: 'number' },
+    ],
+    marks: {
+      decorators: [
+        { title: 'Bold', value: 'strong' },
+        { title: 'Italic', value: 'em' },
+        { title: 'Underline', value: 'underline' },
+        { title: 'Code', value: 'code' },
+      ],
+      annotations: [
+        {
+          name: 'link',
+          type: 'object',
+          title: 'Link',
+          fields: [defineField({ name: 'href', type: 'url', title: 'URL' })],
+        },
+      ],
+    },
+  };
+}
+
 export default defineType({
   name: 'project',
   title: 'Project',
@@ -67,8 +99,8 @@ export default defineType({
     defineField({
       name: 'overview',
       title: 'Overview',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [richTextBlock()],
     }),
     defineField({
       name: 'sections',
@@ -81,7 +113,7 @@ export default defineType({
           title: 'Text Section',
           fields: [
             defineField({ name: 'title', type: 'string', title: 'Section Title' }),
-            defineField({ name: 'content', type: 'text', title: 'Content', rows: 6 }),
+            defineField({ name: 'content', title: 'Content', type: 'array', of: [richTextBlock()] }),
           ],
           preview: { select: { title: 'title' }, prepare: ({ title }) => ({ title: title ?? 'Text Section' }) },
         },
