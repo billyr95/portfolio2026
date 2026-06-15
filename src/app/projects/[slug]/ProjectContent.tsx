@@ -45,6 +45,7 @@ const portableTextComponents: PortableTextComponents = {
       </a>
     ),
   },
+  unknownType: () => null,
 };
 
 gsap.registerPlugin(ScrollTrigger);
