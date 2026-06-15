@@ -72,9 +72,6 @@ export default function Hero() {
             <h1 className="text-[clamp(2.5rem,15vw,10rem)] font-medium leading-[0.9] tracking-tight text-white">
               Billy
             </h1>
-            <h1 className="text-[clamp(2.5rem,15vw,10rem)] font-medium leading-[0.9] tracking-tight text-white sm:ml-[0.4em]">
-              Riley
-            </h1>
           </div>
 
           {/* Tagline */}
