@@ -62,3 +62,13 @@ export const firstProjectQuery = groq`
     "slug": slug.current,
   }
 `;
+
+export const siteSettingsQuery = groq`
+  *[_type == "siteSettings"][0] {
+    bio,
+    email,
+    linkedin,
+    github,
+    resumeUrl,
+  }
+`;

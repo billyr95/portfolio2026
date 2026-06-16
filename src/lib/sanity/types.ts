@@ -45,3 +45,11 @@ export interface NextProject {
   title: string;
   slug: string;
 }
+
+export interface SiteSettings {
+  bio: PortableTextBlock[] | null;
+  email: string | null;
+  linkedin: string | null;
+  github: string | null;
+  resumeUrl: string | null;
+}

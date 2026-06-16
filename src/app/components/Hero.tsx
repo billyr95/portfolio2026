@@ -70,7 +70,7 @@ export default function Hero() {
           {/* Name */}
           <div ref={nameRef} className="mb-4 sm:mb-6">
             <h1 className="text-[clamp(2.5rem,15vw,10rem)] font-medium leading-[0.9] tracking-tight text-white">
-              Billy
+              Billy Riley
             </h1>
           </div>
 
