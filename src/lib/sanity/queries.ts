@@ -44,10 +44,12 @@ export const projectBySlugQuery = groq`
       "alt": image.alt,
       caption,
       // mobile gallery
-      images[] {
-        "src": asset->url,
-        "alt": alt,
-      },
+      "mobileImages": [
+        { "src": image1.asset->url, "alt": image1.alt },
+        { "src": image2.asset->url, "alt": image2.alt },
+        { "src": image3.asset->url, "alt": image3.alt },
+        { "src": image4.asset->url, "alt": image4.alt },
+      ],
     },
   }
 `;

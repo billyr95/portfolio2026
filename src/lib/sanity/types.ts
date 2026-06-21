@@ -20,7 +20,7 @@ export interface ImageSection {
 export interface MobileGallerySection {
   _key: string;
   _type: 'mobileGallery';
-  images: { src: string; alt: string }[];
+  mobileImages: { src: string | null; alt: string | null }[];
   caption?: string;
 }
 
