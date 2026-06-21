@@ -174,7 +174,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
               if (section._type === 'imageSection') {
                 return (
                   <figure key={section._key} className="space-y-3 sm:space-y-4">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-white/5 sm:aspect-video">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-white/5 shadow-2xl shadow-black/40 sm:aspect-video">
                       {section.src && (
                         <Image
                           src={section.src}
@@ -184,6 +184,30 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
                           sizes="(max-width: 640px) 100vw, 90vw"
                         />
                       )}
+                    </div>
+                    {section.caption && (
+                      <figcaption className="text-center text-xs text-white/40 sm:text-sm">{section.caption}</figcaption>
+                    )}
+                  </figure>
+                );
+              }
+              if (section._type === 'mobileGallery') {
+                return (
+                  <figure key={section._key} className="space-y-3 sm:space-y-4">
+                    <div className="grid grid-cols-4 gap-3 sm:gap-5 md:gap-8">
+                      {section.images?.map((img, i) => (
+                        <div key={i} className="relative aspect-[9/19.5] overflow-hidden rounded-xl bg-white/5 shadow-2xl shadow-black/40">
+                          {img.src && (
+                            <Image
+                              src={img.src}
+                              alt={img.alt ?? ''}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 25vw, 20vw"
+                            />
+                          )}
+                        </div>
+                      ))}
                     </div>
                     {section.caption && (
                       <figcaption className="text-center text-xs text-white/40 sm:text-sm">{section.caption}</figcaption>

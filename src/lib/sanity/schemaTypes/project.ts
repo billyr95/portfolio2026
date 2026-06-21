@@ -133,6 +133,29 @@ export default defineType({
           ],
           preview: { select: { media: 'image', title: 'caption' }, prepare: (s) => ({ ...s, title: s.title ?? 'Image Section' }) },
         },
+        {
+          type: 'object',
+          name: 'mobileGallery',
+          title: 'Mobile Screenshots (1×4)',
+          fields: [
+            defineField({
+              name: 'images',
+              title: 'Mobile Images',
+              description: 'Exactly 4 mobile screenshots',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [defineField({ name: 'alt', type: 'string', title: 'Alt text' })],
+                },
+              ],
+              validation: (Rule) => Rule.required().min(1).max(4),
+            }),
+            defineField({ name: 'caption', type: 'string', title: 'Caption' }),
+          ],
+          preview: { prepare: () => ({ title: 'Mobile Screenshots' }) },
+        },
       ],
     }),
   ],

@@ -17,7 +17,14 @@ export interface ImageSection {
   caption?: string;
 }
 
-export type ProjectSection = TextSection | ImageSection;
+export interface MobileGallerySection {
+  _key: string;
+  _type: 'mobileGallery';
+  images: { src: string; alt: string }[];
+  caption?: string;
+}
+
+export type ProjectSection = TextSection | ImageSection | MobileGallerySection;
 
 // ─── Project ──────────────────────────────────────────────────────────────────
 
