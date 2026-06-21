@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 export const revalidate = 60;
 
@@ -20,6 +21,7 @@ export default async function Home() {
       <Projects projects={projects} />
       <About settings={settings} />
       <Contact settings={settings} />
+      <Footer />
     </main>
   );
 }
