@@ -105,7 +105,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
 
       {/* Hero */}
       <div className="relative h-[50vh] w-full overflow-hidden sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
-        <div ref={heroRef} className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5">
+        <div ref={heroRef} className="absolute inset-0">
           {project.thumbnail && (
             <Image
               src={project.thumbnail}
