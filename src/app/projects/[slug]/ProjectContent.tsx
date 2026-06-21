@@ -197,7 +197,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
                   <figure key={section._key} className="space-y-3 sm:space-y-4">
                     <div className="grid grid-cols-4 gap-3 sm:gap-5 md:gap-8">
                       {images.map((img, i) => (
-                        <div key={i} className="relative aspect-[9/19.5] overflow-hidden rounded-xl bg-white/5 shadow-2xl shadow-black/40">
+                        <div key={i} className="relative aspect-[9/16] overflow-hidden rounded-xl bg-white/5 shadow-2xl shadow-black/40">
                           <Image
                             src={img.src!}
                             alt={img.alt ?? ''}
