@@ -95,6 +95,7 @@ export default defineType({
     defineField({ name: 'role', title: 'Role', type: 'string' }),
     defineField({ name: 'client', title: 'Client', type: 'string' }),
     defineField({ name: 'duration', title: 'Duration', type: 'string' }),
+    defineField({ name: 'liveUrl', title: 'Live Site URL', type: 'url', description: 'Link to the live website' }),
     // Body
     defineField({
       name: 'overview',

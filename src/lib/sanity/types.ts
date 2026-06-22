@@ -15,6 +15,7 @@ export interface ImageSection {
   src: string;
   alt: string;
   caption?: string;
+  lightShadow?: boolean;
 }
 
 export interface MobileGallerySection {
@@ -22,6 +23,7 @@ export interface MobileGallerySection {
   _type: 'mobileGallery';
   mobileImages: { src: string | null; alt: string | null }[];
   caption?: string;
+  lightShadow?: boolean;
 }
 
 export type ProjectSection = TextSection | ImageSection | MobileGallerySection;
@@ -40,6 +42,7 @@ export interface ProjectListItem {
   role: string;
   client: string;
   duration: string;
+  liveUrl?: string;
   _updatedAt: string;
 }
 

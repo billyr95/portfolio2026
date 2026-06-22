@@ -13,6 +13,7 @@ const PROJECT_FIELDS = groq`
   role,
   client,
   duration,
+  liveUrl,
   _updatedAt
 `;
 
@@ -43,6 +44,7 @@ export const projectBySlugQuery = groq`
       "src": image.asset->url,
       "alt": image.alt,
       caption,
+      lightShadow,
       // mobile gallery
       "mobileImages": [
         { "src": image1.asset->url, "alt": image1.alt },

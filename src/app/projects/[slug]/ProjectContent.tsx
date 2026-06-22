@@ -128,6 +128,19 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
           <p className="max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base sm:text-white/70 md:text-lg lg:text-xl">
             {project.description}
           </p>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-200 active:scale-95 sm:mt-6 md:hover:bg-white/20"
+            >
+              Visit Site
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          )}
         </div>
       </div>
 
@@ -174,7 +187,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
               if (section._type === 'imageSection') {
                 return (
                   <figure key={section._key} className="space-y-3 sm:space-y-4">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-white/5 shadow-2xl shadow-black/40 sm:aspect-video">
+                    <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-white/5 sm:aspect-video ${section.lightShadow ? 'shadow-2xl shadow-white/15' : 'shadow-2xl shadow-black/40'}`}>
                       {section.src && (
                         <Image
                           src={section.src}
@@ -197,7 +210,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
                   <figure key={section._key} className="space-y-3 sm:space-y-4">
                     <div className="grid grid-cols-4 gap-3 sm:gap-5 md:gap-8">
                       {images.map((img, i) => (
-                        <div key={i} className="relative aspect-[9/16] overflow-hidden rounded-xl bg-white/5 shadow-2xl shadow-black/40">
+                        <div key={i} className={`relative aspect-[9/16] overflow-hidden rounded-xl bg-white/5 ${section.lightShadow ? 'shadow-2xl shadow-white/15' : 'shadow-2xl shadow-black/40'}`}>
                           <Image
                             src={img.src!}
                             alt={img.alt ?? ''}
