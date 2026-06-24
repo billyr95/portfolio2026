@@ -130,10 +130,10 @@ export default function Projects({ projects }: ProjectsProps) {
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8 lg:p-10">
                 <div className="mb-2 flex items-center gap-3 sm:mb-3">
-                  <span className="text-[10px] font-medium uppercase tracking-widest text-white/40 sm:text-xs">
+                  <span className="text-[10px] font-medium uppercase tracking-widest text-white/70 sm:text-xs">
                     {project.year}
                   </span>
-                  <span className="text-[10px] text-white/30 sm:text-xs">
+                  <span className="text-[10px] text-white/50 sm:text-xs">
                     {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
                   </span>
                 </div>
