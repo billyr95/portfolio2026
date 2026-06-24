@@ -104,17 +104,28 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
       </button>
 
       {/* Hero */}
-      <div className="relative h-[50vh] w-full overflow-hidden sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
-        <div ref={heroRef} className="absolute inset-0">
+      <div className="relative w-full overflow-hidden sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
+        <div ref={heroRef} className="sm:absolute sm:inset-0">
           {project.thumbnail && (
-            <Image
-              src={project.thumbnail}
-              alt={project.thumbnailAlt ?? project.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
+            <>
+              <Image
+                src={project.thumbnail}
+                alt={project.thumbnailAlt ?? project.title}
+                width={1920}
+                height={1080}
+                className="block w-full h-auto sm:hidden"
+                priority
+                sizes="100vw"
+              />
+              <Image
+                src={project.thumbnail}
+                alt={project.thumbnailAlt ?? project.title}
+                fill
+                className="hidden sm:block object-cover"
+                priority
+                sizes="100vw"
+              />
+            </>
           )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
