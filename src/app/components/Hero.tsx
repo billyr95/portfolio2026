@@ -75,8 +75,8 @@ export default function Hero() {
           </div>
 
           {/* Tagline */}
-          <p ref={taglineRef} className="line-clamp-3 max-w-xs text-base font-light leading-relaxed text-white/70 sm:line-clamp-none sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
-            I'm a Design Engineer based in Brooklyn, I close the gap between design and engineering so nothing gets lost in translation.
+          <p ref={taglineRef} className="max-w-xs text-base font-light leading-relaxed text-white/70 sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
+            Design Engineer that closes the gap between design and engineering so nothing gets lost in translation.
           </p>
         </div>
 
