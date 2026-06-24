@@ -83,13 +83,24 @@ export default defineType({
     }),
     defineField({
       name: 'thumbnail',
-      title: 'Thumbnail',
+      title: 'Card Image',
+      description: 'Shown on the project card on the homepage',
       type: 'image',
       options: { hotspot: true },
       fields: [
         defineField({ name: 'alt', type: 'string', title: 'Alt text' }),
       ],
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      description: 'Shown at the top of the project detail page (falls back to Card Image if empty)',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: 'alt', type: 'string', title: 'Alt text' }),
+      ],
     }),
     // Meta
     defineField({ name: 'role', title: 'Role', type: 'string' }),

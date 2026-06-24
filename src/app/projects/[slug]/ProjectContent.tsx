@@ -107,11 +107,11 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
       {/* Hero */}
       <div className="relative w-full overflow-hidden sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
         <div ref={heroRef} className="sm:absolute sm:inset-0">
-          {project.thumbnail && (
+          {project.heroImage && (
             <>
               <Image
-                src={project.thumbnail}
-                alt={project.thumbnailAlt ?? project.title}
+                src={project.heroImage}
+                alt={project.heroImageAlt ?? project.title}
                 width={1920}
                 height={1080}
                 className="block w-full h-auto sm:hidden"
@@ -119,8 +119,8 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
                 sizes="100vw"
               />
               <Image
-                src={project.thumbnail}
-                alt={project.thumbnailAlt ?? project.title}
+                src={project.heroImage}
+                alt={project.heroImageAlt ?? project.title}
                 fill
                 className="hidden sm:block object-cover"
                 priority

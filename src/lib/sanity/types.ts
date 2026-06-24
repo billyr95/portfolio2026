@@ -47,6 +47,8 @@ export interface ProjectListItem {
 }
 
 export interface ProjectDetail extends ProjectListItem {
+  heroImage: string;
+  heroImageAlt?: string;
   overview: PortableTextBlock[];
   sections: ProjectSection[];
 }

@@ -33,6 +33,8 @@ export const projectSlugsQuery = groq`
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     ${PROJECT_FIELDS},
+    "heroImage": coalesce(heroImage.asset->url, thumbnail.asset->url),
+    "heroImageAlt": coalesce(heroImage.alt, thumbnail.alt),
     overview,
     sections[] {
       _key,
