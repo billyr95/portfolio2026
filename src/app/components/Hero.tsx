@@ -69,13 +69,13 @@ export default function Hero() {
         <div className="flex flex-1 flex-col justify-center px-5 py-20 sm:px-8 md:px-12 lg:px-24">
           {/* Name */}
           <div ref={nameRef} className="mb-4 sm:mb-6">
-            <h1 className="text-[clamp(2.5rem,15vw,10rem)] font-medium leading-[0.9] tracking-tight text-white">
+            <h1 className="text-[clamp(3.2rem,15vw,10rem)] font-medium leading-[0.9] tracking-tight text-white">
               Billy Riley
             </h1>
           </div>
 
           {/* Tagline */}
-          <p ref={taglineRef} className="max-w-xs text-base font-light leading-relaxed text-white/70 sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
+          <p ref={taglineRef} className="line-clamp-3 max-w-xs text-base font-light leading-relaxed text-white/70 sm:line-clamp-none sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
             I'm a Design Engineer based in Brooklyn, I close the gap between design and engineering so nothing gets lost in translation.
           </p>
         </div>

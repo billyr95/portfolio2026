@@ -14,10 +14,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Billy Riley",
-  description: "Portfolio",
+  description: "Design Engineer based in Brooklyn",
   robots: {
     index: false,
     follow: false,
+  },
+  openGraph: {
+    title: "Billy Riley",
+    description: "Design Engineer based in Brooklyn",
+    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Billy Riley",
+    description: "Design Engineer based in Brooklyn",
+    images: ["/og.jpg"],
   },
 };
 

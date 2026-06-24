@@ -107,10 +107,10 @@ export default function Projects({ projects }: ProjectsProps) {
             <article
               key={project._id}
               onClick={() => handleCardClick(project.slug)}
-              className="group relative aspect-[16/10] w-[90vw] flex-shrink-0 cursor-pointer overflow-hidden rounded-xl bg-white/5 transition-all duration-500 ease-out sm:w-[80vw] sm:rounded-lg md:w-[65vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[55vw] xl:w-[50vw]"
+              className="group w-[90vw] flex-shrink-0 cursor-pointer overflow-hidden rounded-xl bg-[#111] transition-all duration-500 ease-out sm:relative sm:aspect-[16/10] sm:w-[80vw] sm:bg-white/5 sm:rounded-lg md:w-[65vw] md:hover:scale-[1.02] md:hover:shadow-2xl md:hover:shadow-black/50 lg:w-[55vw] xl:w-[50vw]"
             >
               {/* Thumbnail */}
-              <div className="absolute inset-0">
+              <div className="relative aspect-[16/10] w-full sm:absolute sm:inset-0 sm:aspect-auto">
                 {project.thumbnail ? (
                   <Image
                     src={project.thumbnail}
@@ -124,11 +124,11 @@ export default function Projects({ projects }: ProjectsProps) {
                 )}
               </div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent sm:from-black/80 sm:via-black/20" />
+              {/* Overlay (desktop only) */}
+              <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8 lg:p-10">
+              <div className="p-5 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:p-6 md:p-8 lg:p-10">
                 <div className="mb-2 flex items-center gap-3 sm:mb-3">
                   <span className="text-[10px] font-medium uppercase tracking-widest text-white/70 sm:text-xs">
                     {project.year}
