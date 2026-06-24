@@ -8,20 +8,21 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import type { ProjectDetail, NextProject } from '@/lib/sanity/types';
+import { nbHyphens } from '@/lib/utils';
 
 const portableTextComponents: PortableTextComponents = {
   block: {
     normal: ({ children }) => (
-      <p className="mb-4 text-base leading-relaxed text-white/60 sm:text-lg sm:text-white/70">{children}</p>
+      <p className="mb-4 text-base leading-relaxed text-white/60 sm:text-lg sm:text-white/70">{nbHyphens(children)}</p>
     ),
     h2: ({ children }) => (
-      <h2 className="mb-3 mt-8 text-xl font-medium text-white sm:text-2xl">{children}</h2>
+      <h2 className="mb-3 mt-8 text-xl font-medium text-white sm:text-2xl">{nbHyphens(children)}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mb-2 mt-6 text-lg font-medium text-white sm:text-xl">{children}</h3>
+      <h3 className="mb-2 mt-6 text-lg font-medium text-white sm:text-xl">{nbHyphens(children)}</h3>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-4 border-l-2 border-white/20 pl-4 italic text-white/50">{children}</blockquote>
+      <blockquote className="my-4 border-l-2 border-white/20 pl-4 italic text-white/50">{nbHyphens(children)}</blockquote>
     ),
   },
   list: {
@@ -137,7 +138,7 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
             {project.title}
           </h1>
           <p className="max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base sm:text-white/70 md:text-lg lg:text-xl">
-            {project.description}
+            {nbHyphens(project.description)}
           </p>
           {project.liveUrl && (
             <a

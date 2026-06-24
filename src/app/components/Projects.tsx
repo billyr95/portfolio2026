@@ -6,6 +6,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { ProjectListItem } from '@/lib/sanity/types';
+import { nbHyphens } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -142,7 +143,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 </h3>
 
                 <p className="mb-4 line-clamp-2 max-w-md text-sm leading-relaxed text-white/60 sm:line-clamp-none sm:text-base sm:text-white/70">
-                  {project.description}
+                  {nbHyphens(project.description)}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">

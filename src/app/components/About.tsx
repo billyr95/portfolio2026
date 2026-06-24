@@ -5,13 +5,14 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { SiteSettings } from '@/lib/sanity/types';
+import { nbHyphens } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const bioComponents: PortableTextComponents = {
   block: {
     normal: ({ children }) => (
-      <p className="mb-4 text-lg leading-relaxed text-white/60 md:text-xl">{children}</p>
+      <p className="mb-4 text-lg leading-relaxed text-white/60 md:text-xl">{nbHyphens(children)}</p>
     ),
   },
   marks: {

@@ -76,8 +76,7 @@ export default function Hero() {
 
           {/* Tagline */}
           <p ref={taglineRef} className="max-w-xs text-base font-light leading-relaxed text-white/70 sm:max-w-md sm:text-lg md:max-w-xl md:text-xl md:text-white/80">
-            Design Engineer crafting polished digital experiences — 
-            where thoughtful design meets production-ready code.
+            I'm a Design Engineer based in Brooklyn — I close the gap between design and engineering so nothing gets lost in translation.
           </p>
         </div>
 
