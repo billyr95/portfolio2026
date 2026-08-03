@@ -125,7 +125,8 @@ export default function Projects({ projects }: ProjectsProps) {
               </div>
 
               {/* Overlay (desktop only) */}
-              <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="hidden sm:block absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/95 via-black/70 via-40% to-transparent" />
 
               {/* Content */}
               <div className="p-5 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:p-6 md:p-8 lg:p-10">
