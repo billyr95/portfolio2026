@@ -62,6 +62,21 @@ export default defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      description: 'Which homepage section this project appears in',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Selected Work', value: 'selectedWork' },
+          { title: 'Personal Project', value: 'personalProject' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'selectedWork',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'description',
       title: 'Short Description',
       description: 'One-liner shown on the card',

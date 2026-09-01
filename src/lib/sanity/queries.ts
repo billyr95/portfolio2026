@@ -5,6 +5,7 @@ const PROJECT_FIELDS = groq`
   _id,
   title,
   "slug": slug.current,
+  category,
   description,
   year,
   tags,
@@ -17,9 +18,18 @@ const PROJECT_FIELDS = groq`
   _updatedAt
 `;
 
-// All projects — lightweight, for the list / carousel
-export const projectsQuery = groq`
-  *[_type == "project"] | order(order asc, year desc) {
+// Selected Work — lightweight, for the homepage carousel.
+// Missing category defaults to Selected Work so existing projects don't
+// disappear before their category field is set in Studio.
+export const selectedWorkQuery = groq`
+  *[_type == "project" && (category == "selectedWork" || !defined(category))] | order(order asc, year desc) {
+    ${PROJECT_FIELDS}
+  }
+`;
+
+// Personal Projects — lightweight, for the homepage carousel
+export const personalProjectsQuery = groq`
+  *[_type == "project" && category == "personalProject"] | order(order asc, year desc) {
     ${PROJECT_FIELDS}
   }
 `;

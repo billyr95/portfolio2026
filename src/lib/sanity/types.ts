@@ -34,6 +34,7 @@ export interface ProjectListItem {
   _id: string;
   title: string;
   slug: string;
+  category: 'selectedWork' | 'personalProject';
   description: string;
   year: string;
   tags: string[];

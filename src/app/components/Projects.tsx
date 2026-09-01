@@ -12,9 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsProps {
   projects: ProjectListItem[];
+  heading?: string;
+  sectionId?: string;
 }
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects({ projects, heading = 'Selected Work', sectionId = 'projects' }: ProjectsProps) {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -82,11 +84,11 @@ export default function Projects({ projects }: ProjectsProps) {
   }
 
   return (
-    <section id="projects" ref={sectionRef} className="relative z-10 py-16 sm:py-20 md:py-24">
+    <section id={sectionId} ref={sectionRef} className="relative z-10 py-16 sm:py-20 md:py-24">
       {/* Section Header */}
       <div ref={headerRef} className="mb-8 px-4 sm:mb-10 sm:px-6 md:mb-12 md:px-12 lg:px-24">
         <h2 className="text-xs font-medium uppercase tracking-widest text-white/50 sm:text-sm">
-          Selected Work
+          {heading}
         </h2>
       </div>
 

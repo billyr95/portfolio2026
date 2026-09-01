@@ -82,12 +82,13 @@ export default function ProjectContent({ project, nextSlug, nextProject }: Proje
   }, []);
 
   const handleBack = () => {
+    const anchor = project.category === 'personalProject' ? '/#personal-projects' : '/#projects';
     gsap.to(containerRef.current, {
       opacity: 0,
       y: 20,
       duration: 0.4,
       ease: 'power2.in',
-      onComplete: () => router.push('/#projects'),
+      onComplete: () => router.push(anchor),
     });
   };
 

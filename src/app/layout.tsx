@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.billy-riley.com"),
   title: "Billy Riley",
   description: "Design Engineer based in Brooklyn",
   robots: {
